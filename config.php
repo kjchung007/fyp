@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Database Configuration for FCSIT Room Booking System - Cloud Version
 // Author: Chung Kai Jian
 // Date: 2026
