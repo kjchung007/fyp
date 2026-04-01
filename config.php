@@ -1,13 +1,15 @@
 <?php
-// Database Configuration for FCSIT Room Booking System
+// Database Configuration for FCSIT Room Booking System - Cloud Version
 // Author: Chung Kai Jian
 // Date: 2026
 
-// Database credentials
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'fcsit_booking_system');
+// Railway Environment Variables
+// These are automatically pulled from the "Variables" tab in your Railway dashboard
+define('DB_HOST', getenv('MYSQLHOST') ?: 'localhost');
+define('DB_USER', getenv('MYSQLUSER') ?: 'root');
+define('DB_PASS', getenv('MYSQLPASSWORD') ?: '');
+define('DB_NAME', getenv('MYSQLDATABASE') ?: 'fcsit_booking_system');
+define('DB_PORT', getenv('MYSQLPORT') ?: '3306');
 
 // Start session if not already started
 if (session_status() === PHP_SESSION_NONE) {
@@ -16,7 +18,8 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // Create database connection
 try {
-    $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    // Note: Added DB_PORT to the connection for Railway compatibility
+    $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
     
     // Check connection
     if ($conn->connect_error) {
