@@ -87,7 +87,7 @@ if ($stmt->execute()) {
     log_action('REGISTRATION', 'users', $user_id, "New user registered: $email");
     
     // Create welcome notification
-    create_notification($user_id, 'success', 'Welcome!', 'Your account has been created successfully.');
+    create_notification($user_id, 'system', 'Welcome!', 'Your account has been created successfully.');
     
     $_SESSION['success'] = "Account created successfully! You can now login.";
     header("Location: ../login.php");
